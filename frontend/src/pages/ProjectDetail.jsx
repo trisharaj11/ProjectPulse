@@ -202,12 +202,14 @@ const ProjectDetail = () => {
                 </div>
               ) : (
                 project.suggestions.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)).map(sug => (
-                  <div key={sug._id} className={`suggestion-card ${sug.role === 'teacher' ? 'teacher-feedback' : ''}`}>
+                  <div key={sug._id} className={`suggestion-card ${sug.role === 'teacher' ? 'teacher-feedback' : sug.role === 'ai' ? 'ai-feedback' : ''}`}>
                     <div className="suggestion-content">
-                      <p className="suggestion-text" style={{ color: 'var(--text-secondary)', fontWeight: '500' }}>{sug.text}</p>
+                      <p className="suggestion-text" style={{ color: 'var(--text-primary)', fontWeight: '600', whiteSpace: 'pre-wrap', wordBreak: 'break-word', marginBottom: '12px' }}>
+                        {sug.text || sug.suggestion || sug.message || "(No feedback text provided)"}
+                      </p>
                       <div className="meta-row">
-                        <span className={`badge-custom ${sug.role}`}>
-                          {sug.role === 'teacher' ? '👨‍🏫 Teacher' : '👤 Student'}: {sug.authorName}
+                        <span className={`badge-custom ${sug.role === 'ai' ? 'ai' : sug.role}`}>
+                          {sug.role === 'teacher' ? '👨‍🏫 Teacher' : sug.role === 'ai' ? '🤖 AI Analyzer' : '👤 Student'}: {sug.authorName}
                         </span>
                         <span className="badge-custom version" style={{ background: 'var(--bg-surface2)', color: 'var(--text-muted)' }}>
                           ⏳ {sug.estimatedDays || '1-2 days'}
