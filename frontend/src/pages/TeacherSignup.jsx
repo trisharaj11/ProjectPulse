@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const TeacherSignup = () => {
   const [formData, setFormData] = useState({
-    name: '', email: '', password: '', department: ''
+    name: '', teacherId: '', email: '', password: '', department: ''
   });
   const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -19,6 +19,10 @@ const TeacherSignup = () => {
 
   if (loading) return null;
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,33 +30,90 @@ const TeacherSignup = () => {
       toast.success('Teacher account created! Please login.');
       navigate('/teacher-login');
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Signup failed');
+      console.error("Teacher Signup error:", error);
+      toast.error(error.response?.data?.message || 'Signup failed. Please check your details.');
     }
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center min-vh-100 px-3">
-      <div className="auth-card">
+    <div className="d-flex align-items-center justify-content-center min-vh-100 px-3 py-5">
+      <div className="auth-card" style={{ maxWidth: '600px' }}>
         <div className="auth-header teacher">
           <h2 className="heading-lg mb-0">Teacher Registration</h2>
         </div>
         <div className="auth-body">
           <form onSubmit={handleSubmit}>
-            <div className="form-group-custom">
-              <label>Full Name & Title</label>
-              <input type="text" className="input-custom" placeholder="e.g. Prof. Jane Doe" required onChange={(e) => setFormData({...formData, name: e.target.value})} />
-            </div>
-            <div className="form-group-custom">
-              <label>Department</label>
-              <input type="text" className="input-custom" placeholder="e.g. Faculty of Technology" required onChange={(e) => setFormData({...formData, department: e.target.value})} />
-            </div>
-            <div className="form-group-custom">
-              <label>Institutional Email</label>
-              <input type="email" className="input-custom" required onChange={(e) => setFormData({...formData, email: e.target.value})} />
-            </div>
-            <div className="form-group-custom">
-              <label>Password</label>
-              <input type="password" className="input-custom" required onChange={(e) => setFormData({...formData, password: e.target.value})} />
+            <div className="row g-3">
+              <div className="col-md-6">
+                <div className="form-group-custom">
+                  <label>Full Name & Title</label>
+                  <input 
+                    type="text" 
+                    name="name"
+                    className="input-custom" 
+                    placeholder="e.g. Prof. Jane Doe" 
+                    value={formData.name}
+                    required 
+                    onChange={handleChange} 
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group-custom">
+                  <label>Teacher ID / Employee ID</label>
+                  <input 
+                    type="text" 
+                    name="teacherId"
+                    className="input-custom" 
+                    placeholder="e.g. T-12345" 
+                    value={formData.teacherId}
+                    required 
+                    onChange={handleChange} 
+                  />
+                </div>
+              </div>
+              <div className="col-md-12">
+                <div className="form-group-custom">
+                  <label>Department</label>
+                  <input 
+                    type="text" 
+                    name="department"
+                    className="input-custom" 
+                    placeholder="e.g. Faculty of Technology" 
+                    value={formData.department}
+                    required 
+                    onChange={handleChange} 
+                  />
+                </div>
+              </div>
+              <div className="col-md-12">
+                <div className="form-group-custom">
+                  <label>Institutional Email</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    className="input-custom" 
+                    placeholder="prof.name@university.edu" 
+                    value={formData.email}
+                    required 
+                    onChange={handleChange} 
+                  />
+                </div>
+              </div>
+              <div className="col-md-12">
+                <div className="form-group-custom">
+                  <label>Password</label>
+                  <input 
+                    type="password" 
+                    name="password"
+                    className="input-custom" 
+                    placeholder="••••••••" 
+                    value={formData.password}
+                    required 
+                    onChange={handleChange} 
+                  />
+                </div>
+              </div>
             </div>
             <button type="submit" className="btn-custom btn-primary-teacher w-100 py-3 mt-4">
               Register as Teacher

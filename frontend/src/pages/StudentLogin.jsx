@@ -17,6 +17,10 @@ const StudentLogin = () => {
 
   if (loading) return null;
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,6 +30,7 @@ const StudentLogin = () => {
       toast.success('Welcome back, Student!');
       navigate('/student-dashboard');
     } catch (error) {
+      console.error("Student login error:", error);
       toast.error(error.response?.data?.message || 'Login failed');
     }
   };
@@ -42,20 +47,24 @@ const StudentLogin = () => {
               <label>Email Address</label>
               <input 
                 type="email" 
+                name="email"
                 className="input-custom" 
                 placeholder="name@university.edu"
+                value={formData.email}
                 required
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group-custom">
               <label>Password</label>
               <input 
                 type="password" 
+                name="password"
                 className="input-custom" 
                 placeholder="••••••••"
+                value={formData.password}
                 required
-                onChange={(e) => setFormData({...formData, password: e.target.value})}
+                onChange={handleChange}
               />
             </div>
             <button type="submit" className="btn-custom btn-primary-student w-100 py-3 mt-3">

@@ -11,7 +11,12 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,8 +35,12 @@ app.use('/api/suggestions', require('./routes/suggestionRoutes'));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   console.error(err.stack);
-  res.status(err.status || 500).json({ message: err.message || 'Server Error' });
+  res.status(statusCode).json({ 
+    message: err.message || 'Server Error',
+    stack: process.env.NODE_ENV === 'production' ? null : err.stack
+  });
 });
 
 const PORT = process.env.PORT || 5000;
