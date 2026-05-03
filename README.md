@@ -1,4 +1,4 @@
-# ProjectPulse — MERN Project Feedback Platform
+# ProjectPulse - MERN Project Feedback Platform
 
 ProjectPulse is a premium, glassmorphic project management and feedback platform designed for students and teachers. It streamlines the project submission process, provides AI-driven suggestions, and enables real-time teacher feedback.
 
@@ -91,4 +91,4 @@ npm run dev
 - **JWT**: Secure JSON Web Token authentication for all API endpoints.
 - **CORS**: Configured to allow secure cross-origin requests from the Vercel frontend.
 
-Built with ❤️ by ProjectPulse Team.
+
