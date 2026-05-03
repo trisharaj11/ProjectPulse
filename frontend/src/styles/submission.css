@@ -1,0 +1,9 @@
+/* Submission viewer styles are now integrated into ProjectDetail and global.css */
+.min-vh-40 {
+  min-height: 400px;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  opacity: 0.2;
+}

@@ -1,0 +1,18 @@
+/* Dashboard styles are now mostly in global.css */
+.metric-card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+  opacity: 0.8;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-container i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
