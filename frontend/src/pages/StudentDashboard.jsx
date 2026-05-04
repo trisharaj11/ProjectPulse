@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getProjects } from '../api/projectAPI';
 import { AuthContext } from '../context/AuthContext';
 import Spinner from '../components/Spinner';
+import '../styles/dashboard.css';
 
 const StudentDashboard = () => {
   const { user } = useContext(AuthContext);

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../api/authAPI';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import '../styles/auth.css';
 
 const TeacherLogin = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });

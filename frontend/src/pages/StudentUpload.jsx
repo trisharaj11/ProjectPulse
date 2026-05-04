@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { uploadProject, uploadVersion, getProjectById } from '../api/projectAPI';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import '../styles/submission.css';
 
 const StudentUpload = () => {
   const [searchParams] = useSearchParams();

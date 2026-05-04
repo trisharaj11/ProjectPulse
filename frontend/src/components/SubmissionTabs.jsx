@@ -5,7 +5,8 @@ import PDFViewer from './PDFViewer';
 const SubmissionTabs = ({ project }) => {
   const [activeTab, setActiveTab] = useState('zip');
 
-  const baseURL = 'http://localhost:5000';
+  const apiBase = import.meta.env.VITE_API_URL?.replace('/api/', '') || 'http://localhost:5000';
+  const baseURL = apiBase;
 
   return (
     <div>

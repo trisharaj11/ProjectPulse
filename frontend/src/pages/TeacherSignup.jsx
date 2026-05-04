@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../api/authAPI';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import '../styles/auth.css';
 
 const TeacherSignup = () => {
   const [formData, setFormData] = useState({

@@ -4,6 +4,8 @@ import { getProjectById, uploadVersion, addSuggestion, voteSuggestion } from '..
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import Spinner from '../components/Spinner';
+import '../styles/detail.css';
+import '../styles/submission.css';
 import ScreenshotGallery from '../components/ScreenshotGallery';
 import SubmissionTabs from '../components/SubmissionTabs';
 

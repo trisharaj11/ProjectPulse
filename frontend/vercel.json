@@ -1,5 +1,17 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://project-pulse-lime.vercel.app chrome-extension://55fc14a9-e7a0-447f-95dc-774915d2e098; script-src-elem 'self' 'unsafe-inline' https://project-pulse-lime.vercel.app chrome-extension://55fc14a9-e7a0-447f-95dc-774915d2e098; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://projectpulse-akyw.onrender.com https://project-pulse-lime.vercel.app; frame-src 'self' https://project-pulse-lime.vercel.app; object-src 'none';"
+        }
+      ]
+    }
   ]
 }
+
